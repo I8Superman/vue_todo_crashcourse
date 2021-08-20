@@ -1,0 +1,23 @@
+<template>
+  <div>
+    <h1>TODOS TODAY</h1>
+    <div v-bind:key="todo.id" v-for="todo in todos">
+      <TodoItem />
+    </div>
+  </div>
+</template>
+
+<script>
+import TodoItem from "./TodoItem";
+
+export default {
+  name: "Todos",
+  components: {
+    TodoItem,
+  },
+  props: ["todos"],
+};
+</script>
+
+<style scoped>
+</style>
