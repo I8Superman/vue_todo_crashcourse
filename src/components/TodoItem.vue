@@ -1,12 +1,22 @@
 <template>
-  <div>
-    <p>Todo Item</p>
+  <!-- We can 'bind' classes based on conditions. Here the completed value (boolean) -->
+  <div class="todo-item" v-bind:class="{ 'is-complete': todo.completed }">
+    <p>
+      <input type="checkbox" v-on:change="markComplete" />
+      {{ todo.title }}
+    </p>
   </div>
 </template>
 
 <script>
 export default {
   name: "TodoItem",
+  props: ["todo"],
+  methods: {
+    markComplete() {
+      this.todo.completed = !this.todo.completed;
+    },
+  },
 };
 </script>
 
