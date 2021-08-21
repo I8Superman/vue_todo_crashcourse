@@ -13,12 +13,26 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from "uuid";
+
 export default {
   name: "AddTodo",
   data() {
     return {
       title: "",
     };
+  },
+  methods: {
+    addTodo(event) {
+      event.preventDefault();
+      const newTodo = {
+        id: uuidv4(),
+        title: this.title,
+        completed: false,
+      };
+      this.$emit("add-todo", newTodo); // Sending the whole todo object to the parent component (App.vue)
+      this.title = "";
+    },
   },
 };
 </script>

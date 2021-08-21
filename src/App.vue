@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <AddTodo />
+    <AddTodo v-on:add-todo="addTodo" />
     <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
   </div>
 </template>
@@ -20,30 +20,25 @@ export default {
   },
   data() {
     return {
-      todos: [
-        // An array of objects
-        {
-          id: 1,
-          title: "Rydde op",
-          completed: false,
-        },
-        {
-          id: 2,
-          title: "Vaske tøj",
-          completed: false,
-        },
-        {
-          id: 3,
-          title: "Øve mig på Vue!",
-          completed: false,
-        },
-      ],
+      todos: [],
     };
   },
   methods: {
     deleteTodo(id) {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
+    addTodo(newTodo) {
+      this.todos = [...this.todos, newTodo];
+    },
+  },
+  created() {
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=7")
+      .then((res) => res.json())
+      .then((data) => {
+        this.todos = data;
+        console.log(this.todos);
+      })
+      .catch((err) => console.log(err));
   },
 };
 </script>
