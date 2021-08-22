@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid"; - no need for it after using json placeholder fake server
+// let nextId = 201;
 
 export default {
   name: "AddTodo",
@@ -26,12 +27,14 @@ export default {
     addTodo(event) {
       event.preventDefault();
       const newTodo = {
-        id: uuidv4(),
+        // id: uuidv4(),
+        // id: nextId,
         title: this.title,
         completed: false,
       };
       this.$emit("add-todo", newTodo); // Sending the whole todo object to the parent component (App.vue)
       this.title = "";
+      // nextId++;
     },
   },
 };

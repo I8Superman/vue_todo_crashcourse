@@ -28,15 +28,28 @@ export default {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
     addTodo(newTodo) {
-      this.todos = [...this.todos, newTodo];
+      //const { title, completed } = newTodo;
+
+      fetch("http://localhost:5000/todos", {
+        method: "post",
+        body: JSON.stringify(newTodo),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((postData) => {
+          console.log(postData);
+          this.todos = [...this.todos, postData];
+        });
     },
   },
   created() {
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=7")
+    fetch("http://localhost:5000/todos") // Fetching from fake, local jso db - nice!
       .then((res) => res.json())
       .then((data) => {
         this.todos = data;
-        console.log(this.todos);
+        // console.log(this.todos);
       })
       .catch((err) => console.log(err));
   },
