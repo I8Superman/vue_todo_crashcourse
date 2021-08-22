@@ -23,43 +23,6 @@
       "id": 4,
       "title": "et porro tempora",
       "completed": true
-    },
-    {
-      "userId": 1,
-      "id": 5,
-      "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 6,
-      "title": "qui ullam ratione quibusdam voluptatem quia omnis",
-      "completed": false
-    },
-    {
-      "title": "First do this",
-      "completed": false,
-      "id": 7
-    },
-    {
-      "title": "sdsds",
-      "completed": false,
-      "id": 8
-    },
-    {
-      "title": "dsdsss",
-      "completed": false,
-      "id": 9
-    },
-    {
-      "title": "FFF",
-      "completed": false,
-      "id": 10
-    },
-    {
-      "title": "000",
-      "completed": false,
-      "id": 11
     }
   ]
 }

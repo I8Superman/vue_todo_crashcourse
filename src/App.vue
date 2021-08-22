@@ -25,6 +25,16 @@ export default {
   },
   methods: {
     deleteTodo(id) {
+      fetch("http://localhost:5000/todos/" + id, {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "cache-control": "no-cache",
+        },
+      })
+        .then((res) => res.json())
+        .then((deleteData) => console.log(deleteData));
+
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
     addTodo(newTodo) {
@@ -39,8 +49,8 @@ export default {
       })
         .then((res) => res.json())
         .then((postData) => {
-          console.log(postData);
-          this.todos = [...this.todos, postData];
+          //console.log(postData);
+          this.todos = [...this.todos, postData]; // Why do I need to add it to my arr too? Shouldn't it update automatically based on the db?
         });
     },
   },
